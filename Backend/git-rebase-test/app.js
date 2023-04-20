@@ -58,9 +58,13 @@ app.post("/users/signin", async (req, res) => {
 });
 
 app.listen(PORT, () => {
-  appDataSource.initialize().then(() => {
-    console.log("DB Connection has been initialized");
-  });
-
+  appDataSource
+    .initialize()
+    .then(() => {
+      console.log("DB Connection has been initialized");
+    })
+    .catch(() => {
+      console.log("DB Connection has been failed");
+    });
   console.log(`Listening to request on localhost:${PORT}`);
 });
